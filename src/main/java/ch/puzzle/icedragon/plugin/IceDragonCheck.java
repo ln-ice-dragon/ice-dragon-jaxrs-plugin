@@ -6,23 +6,20 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 
 import java.util.Date;
 
-import static ch.puzzle.icedragon.plugin.DragonParams.getParameter;
+import static ch.puzzle.icedragon.plugin.IceDragonParams.getParameter;
 
 @ApplicationScoped
-public class DragonCheck {
+public class IceDragonCheck {
 
     private static final String ICE_DRAGON_SECRET_PARAM_NAME = "ICE_DRAGON_SHARED_SECRET";
 
     private JWTVerifier verifier;
 
-    @PostConstruct
-    public void init() {
-
+    public IceDragonCheck() {
         String sharedSecret = getParameter(ICE_DRAGON_SECRET_PARAM_NAME);
         Algorithm algorithm = Algorithm.HMAC512(sharedSecret);
         verifier = JWT.require(algorithm)

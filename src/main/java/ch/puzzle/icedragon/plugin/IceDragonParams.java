@@ -2,7 +2,7 @@ package ch.puzzle.icedragon.plugin;
 
 import java.util.Optional;
 
-public class DragonParams {
+public class IceDragonParams {
 
     public static String getParameter(String paramName) {
         return getParameter(paramName, null);

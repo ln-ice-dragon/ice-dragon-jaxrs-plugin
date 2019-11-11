@@ -1,24 +1,14 @@
 package ch.puzzle.icedragon.plugin;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.auth0.jwt.interfaces.JWTVerifier;
-
-import javax.annotation.PostConstruct;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Cookie;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.nio.file.Paths;
-import java.util.Date;
-import java.util.Optional;
 
-import static ch.puzzle.icedragon.plugin.DragonParams.getParameter;
+import static ch.puzzle.icedragon.plugin.IceDragonParams.getParameter;
 
 
 @Path("/dragons-nest")
@@ -31,10 +21,8 @@ public class DragonsNest {
 
     private String iceDragonOrigin;
 
-    @PostConstruct
-    public void init() {
+    public DragonsNest() {
         this.iceDragonOrigin = getParameter(ICE_DRAGON_ORIGIN_PARAM_NAME, ICE_DRAGON_ORIGIN_DEFAULT);
-
     }
 
     @GET
